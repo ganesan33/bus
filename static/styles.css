@@ -1,0 +1,308 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Navigation bar */
+nav {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #222;
+    color: white;
+}
+
+/* Logo */
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Navigation links */
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ccc;
+}
+
+/* Login button */
+.login-btn {
+    background: white;
+    color: black;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-btn:hover {
+    background: #ddd;
+}
+
+/* Main layout */
+main {
+    max-width: 1100px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Layout for left (search + details) and right (map) */
+.content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Left section (search + details) */
+.left {
+    width: 50%;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    
+}
+
+/* Right section (Map) */
+.right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Map styling */
+#map {
+    height: 550px;
+    width: 100%;
+    border-radius: 8px;
+    margin-left: 190px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Search input */
+.input-group {
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Search button */
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Bus details container */
+#bus-details {
+    margin-top: 20px;
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Bus details header */
+#bus-details h3 {
+    margin-bottom: 10px;
+}
+
+/* Bus details text */
+#bus-details p {
+    margin-bottom: 5px;
+    font-size: 1rem;
+    font-weight: 500;  
+}
+
+/* Route and nearby stops lists */
+ul {
+    list-style: none;
+    padding-left: 10px;
+}
+
+ul li {
+    padding: 5px 0;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 800px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .left, .right {
+        width: 100%;
+    }
+
+    #map {
+        height: 250px;
+    }
+}
+/* Print All Routes Button */
+#print-routes-btn {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#print-routes-btn:hover {
+    background-color: #218838;
+}
+
+/* Back Button */
+#back-btn {
+    background: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+/* Routes Page Styling */
+#all-routes {
+    max-width: 800px;
+    margin: 80px auto;
+    text-align: left;
+}
+
+.bus-route {
+    background: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#live-map {
+    margin-left: 190px;
+}
+
+#a {
+    font-weight: bold;
+}
+
+#b {
+    font-weight: bold;
+}
+
+#bb {
+    font-weight: bold;
+}
+
+#remove-markers {
+    margin-left: 90px;
+}
+/* Default Page Styles (No Changes to the Original Page) */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background-color: #f8f9fa;
+}
+
+/* ✅ Apply these styles ONLY for the About page */
+.about-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+/* About Page Container */
+.about-page .about-container {
+    max-width: 800px;
+    padding: 20px;
+    text-align: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* About Page Heading */
+.about-page .about-container h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* About Page Paragraph */
+.about-page .about-container p {
+    font-size: 1.1rem;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* List Styling */
+.about-page .about-container ul {
+    text-align: left;
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+/* Back Button (Only for About Page) */
+.about-page #back-btn {
+    background: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-top: 20px;
+}
+
+.about-page #back-btn:hover {
+    background: #0056b3;
+}

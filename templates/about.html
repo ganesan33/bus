@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Bus Management System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="about-page">
+    <nav>
+        <div class="logo">Bus Management</div>
+    </nav>
+
+    <main class="about-container">
+        <h1>About Bus Management System</h1>
+        <p>
+            The **Bus Management System** is an interactive platform that allows users to 
+            search for buses, check their routes, and track their live locations on a map.
+        </p>
+        <p>
+            Features include:
+            <ul>
+                <li>Live bus tracking using GPS coordinates.</li>
+                <li>Search functionality for buses by number.</li>
+                <li>Display of bus routes with source and destination.</li>
+                <li>Nearby bus suggestions when seats are unavailable.</li>
+                <li>Ability to reset map and remove markers.</li>
+            </ul>
+        </p>
+        <p>
+            This system is developed using **Flask, Firebase, Leaflet.js, and JavaScript** 
+            for an interactive and efficient user experience.
+        </p>
+
+        <button id="back-btn">← Back to Home</button>
+    </main>
+
+    <script>
+        document.getElementById("back-btn").addEventListener("click", function () {
+            window.location.href = "/";
+        });
+    </script>
+</body>
+</html>

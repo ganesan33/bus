@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">Bus Management</div>
+        <div class="nav-links">
+            <a href="/about">About</a>
+            <a href="#">Contact</a>
+            <button id="login-btn">Login</button>
+        </div>
+    </nav>
+
+    <main>
+        <section class="content">
+            <!-- Left section for search and bus details -->
+            <div class="left">
+                <h2>Find Your Bus</h2>
+                <div class="input-group">
+                    <label>Enter Bus Number:</label>
+                    <input type="text" id="bus-number" placeholder="e.g., 27C">
+                </div>
+                <button id="search-btn">Search</button>
+                    
+                <!-- Bus Details -->
+                <div id="bus-details">
+                    <div id="bb"></div>
+                    <p> <span id="bus-number-display"></span></p>
+                    <p> <span id="bus-name"></span></p>
+                    <p> <span id="bus-availability"></span></p>
+                
+                    <div id="a"></div>
+                    <ul id="bus-routes"></ul>
+
+                    <!-- Nearby Bus Sources -->
+                    <div id="b"></div>
+                    <ul id="nearby-buses"></ul>
+                </div>
+
+                <!-- Print All Routes Button -->
+                <button id="print-routes-btn">Print All Routes</button>
+            </div>
+
+            <!-- Right section for Map -->
+            <div class="right">
+                <h2 id="live-map">Live Map</h2>
+                <div id="map"></div>
+                <div>
+                    <button id="remove-markers" onclick="removeMarkers()">Remove all markers</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        document.getElementById('print-routes-btn').addEventListener('click', function() {
+            window.location.href = '/routes';
+        });
+
+        document.getElementById('login-btn').addEventListener('click', function() {
+            window.location.href = '/login';
+        });
+    </script>
+</body>
+</html>
+
+
