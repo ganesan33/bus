@@ -2,7 +2,8 @@ import math
 import json
 import firebase_admin
 from firebase_admin import credentials, firestore
-from flask import Flask, jsonify, render_template,request
+from flask import Flask, jsonify, render_template, request
+
 
 # Load Firebase credentials
 cred = credentials.Certificate("cbms2-o-firebase-adminsdk-fbsvc-56619026a7.json")
@@ -73,9 +74,8 @@ def get_all_routes():
         return jsonify(bus_list)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-from flask import request
 
-@app.route('/validate_login', methods=['POST'])
+
 @app.route('/validate_login', methods=['POST'])
 def validate_login():
     try:
