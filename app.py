@@ -2,18 +2,16 @@ import math
 import json
 import firebase_admin
 from firebase_admin import credentials, firestore
-from flask import Flask, jsonify, render_template, request
-
+from flask import Flask, jsonify, render_template, request, session, redirect, url_for
+import os
 
 # Load Firebase credentials
-cred = credentials.Certificate("cbms2-o-firebase-adminsdk-fbsvc-56619026a7.json")
+cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
-
-# Initialize Firestore client
 db = firestore.client()
 
 app = Flask(__name__)
-
+app.secret_key = '3b9f8d7a6c5e4f2a1b0c9d8e7f6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8' 
 @app.route('/')
 def home():
     return render_template('index.html')
@@ -90,24 +88,24 @@ def validate_login():
         admin_doc = db.collection("admins").document(username).get()
 
         if not admin_doc.exists:
-            print("User not found in Firestore")  # Debugging log
             return jsonify({"error": "User not found"}), 404
 
         admin_data = admin_doc.to_dict()
         stored_password = admin_data.get("password")
 
         if stored_password is None:
-            print("Password field missing in Firestore")  # Debugging log
             return jsonify({"error": "Password field missing"}), 500
 
         # Validate credentials
         if password == stored_password:
+            # Set session variables
+            session['logged_in'] = True
+            session['username'] = username
             return jsonify({"success": True, "redirect": "/admin"}), 200
         else:
             return jsonify({"error": "Invalid username or password"}), 401
 
     except Exception as e:
-        print("Error connecting to Firestore:", e)  # Debugging log
         return jsonify({"error": str(e)}), 500
 
 # Route to render the all routes page
@@ -126,16 +124,27 @@ def login_page():
 
 @app.route('/loggingInfo')
 def logging_info():
-    return render_template('info.html')
+    docs = db.collection('27c').stream()
+
+    buses = {}
+    for doc in docs:
+        buses[doc.id] = doc.to_dict()  # Store document ID and data
+
+    return render_template('info.html', buses=buses)
 
 @app.route('/admin')
 def admin_page():
+    # Check if user is logged in
+    if not session.get('logged_in'):
+        return redirect(url_for('login_page'))  # Redirect to login if not
     return render_template('admin.html')
-
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    session.pop('username', None)
+    return redirect(url_for('home'))
 if __name__ == '__main__':
     app.run(debug=True)
-
-
 
 
 
