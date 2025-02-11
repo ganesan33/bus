@@ -6,8 +6,13 @@ from flask import Flask, jsonify, render_template, request, session, redirect, u
 import os
 
 # Load Firebase credentials
-cred = credentials.Certificate("serviceAccountKey.json")
+firebase_credentials = json.loads(os.getenv("FIREBASE_CREDENTIALS"))
+
+# Initialize Firebase Admin SDK
+cred = credentials.Certificate(firebase_credentials)
 firebase_admin.initialize_app(cred)
+
+# Initialize Firestore
 db = firestore.client()
 
 app = Flask(__name__)
