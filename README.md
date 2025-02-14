@@ -10,6 +10,7 @@ This project automates college bus seat tracking using ESP32 (NFC scanning), Fla
 🔹 Tech Stack
 
 ✅ Backend: Flask (Python)
+✅ Frontend: HTML , CSS , Javascript 
 ✅ Database: Firebase Realtime Database
 ✅ Hardware: ESP32 (for NFC scanning)
 ✅ API Communication: HTTP (ESP32 → Flask → Firebase)
